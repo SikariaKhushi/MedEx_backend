@@ -1,0 +1,101 @@
+[
+    {
+      "doctorName": "Dr. John Doe",
+      "specialization": "Cardiology",
+      "workingHours": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "availability": [
+        "2024-04-01T10:00:00Z",
+        "2024-04-02T09:30:00Z",
+        "2024-04-03T11:00:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. Jane Smith",
+      "specialization": "Dermatology",
+      "workingHours": {
+        "start": "08:30 AM",
+        "end": "04:30 PM"
+      },
+      "availability": [
+        "2024-04-01T08:30:00Z",
+        "2024-04-02T09:00:00Z",
+        "2024-04-03T10:00:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. David Johnson",
+      "specialization": "Pediatrics",
+      "workingHours": {
+        "start": "10:00 AM",
+        "end": "06:00 PM"
+      },
+      "availability": [
+        "2024-04-01T11:00:00Z",
+        "2024-04-02T10:30:00Z",
+        "2024-04-03T11:30:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. Emily Johnson",
+      "specialization": "Orthopedics",
+      "workingHours": {
+        "start": "09:30 AM",
+        "end": "04:00 PM"
+      },
+      "availability": [
+        "2024-04-01T09:30:00Z",
+        "2024-04-02T10:00:00Z",
+        "2024-04-03T11:30:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. Michael Lee",
+      "specialization": "Cardiology",
+      "workingHours": {
+        "start": "08:00 AM",
+        "end": "05:30 PM"
+      },
+      "availability": [
+        "2024-04-01T08:00:00Z",
+        "2024-04-02T09:00:00Z",
+        "2024-04-03T10:30:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. Sarah Williams",
+      "specialization": "Dermatology",
+      "workingHours": {
+        "start": "09:00 AM",
+        "end": "05:00 PM"
+      },
+      "availability": [
+        "2024-04-01T09:00:00Z",
+        "2024-04-02T10:00:00Z",
+        "2024-04-03T11:00:00Z"
+      ],
+      "appointments": []
+    },
+    {
+      "doctorName": "Dr. Robert Brown",
+      "specialization": "Orthopedics",
+      "workingHours": {
+        "start": "10:30 AM",
+        "end": "06:30 PM"
+      },
+      "availability": [
+        "2024-04-01T10:30:00Z",
+        "2024-04-02T11:00:00Z",
+        "2024-04-03T12:00:00Z"
+      ],
+      "appointments": []
+    }
+  ]
+  

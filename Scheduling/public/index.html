@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment</title>
+</head>
+<body>
+    <h1>Book Appointment</h1>
+
+    <label for="specialization">Specialization:</label>
+    <input type="text" id="specialization"><br><br>
+
+    <label for="urgencyLevel">Urgency Level:</label>
+    <select id="urgencyLevel">
+        <option value="red">Red</option>
+        <option value="orange">Orange</option>
+        <option value="green">Green</option>
+    </select><br><br>
+
+    <label for="patientName">Patient Name:</label>
+    <input type="text" id="patientName"><br><br>
+
+    <button onclick="bookAppointment()">Book Appointment</button>
+
+    <div id="appointmentResult"></div>
+
+    <script>
+        async function bookAppointment() {
+            const specialization = document.getElementById('specialization').value;
+            const urgencyLevel = document.getElementById('urgencyLevel').value;
+            const patientName = document.getElementById('patientName').value;
+
+            const response = await fetch('/bookAppointment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ specialization, urgencyLevel, patientName })
+            });
+
+            const data = await response.json();
+            displayAppointmentResult(data);
+        }
+
+        function displayAppointmentResult(data) {
+            const resultDiv = document.getElementById('appointmentResult');
+            resultDiv.innerHTML = '';
+
+            if (data.error) {
+                resultDiv.textContent = 'Error: ' + data.error;
+            } else {
+                const { appointmentTime, doctorDetails, bookedAppointment } = data;
+
+                if (appointmentTime && doctorDetails && bookedAppointment) {
+                    resultDiv.innerHTML = `<p>Appointment Booked Successfully!</p>
+                                           <p>Appointment Time: ${new Date(appointmentTime).toLocaleString()}</p>
+                                           <p>Doctor Name: ${doctorDetails.name}</p>
+                                           <p>Specialization: ${doctorDetails.specialization}</p>`;
+                } else {
+                    resultDiv.innerHTML = '<p>Available Slots:</p>';
+                    data.forEach(doctor => {
+                        resultDiv.innerHTML += `<p>Doctor Name: ${doctor.doctor.name}</p>
+                                               <p>Specialization: ${doctor.doctor.specialization}</p>
+                                               <ul>`;
+                        doctor.slots.forEach(slot => {
+                            resultDiv.innerHTML += `<li>${new Date(slot).toLocaleString()}</li>`;
+                        });
+                        resultDiv.innerHTML += `</ul>`;
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+</html>

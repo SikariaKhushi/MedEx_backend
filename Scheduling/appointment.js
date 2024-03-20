@@ -24,13 +24,15 @@ async function bookAppointment(urgencyLevel, specialization, patientName) {
 
     if (urgencyLevel === 'red') {
       const fastestAppointment = await findFastestAppointment(doctors);
-      if (!fastestAppointment) {
+      if(fastestAppointment){
+        const appointmentTime = fastestAppointment.time;
+        const doctorDetails = fastestAppointment.doctor;
+        const bookedAppointment = await bookSelectedAppointment(doctorDetails._id, appointmentTime, patientName);
+        return { appointmentTime, doctorDetails, bookedAppointment };
+      }
+      else{
         return { error: 'No appointments available for the specified specialization' };
       }
-      const appointmentTime = fastestAppointment.time;
-      const doctorDetails = fastestAppointment.doctor;
-      const bookedAppointment = await bookSelectedAppointment(doctorDetails._id, appointmentTime, patientName);
-      return { appointmentTime, doctorDetails, bookedAppointment };
     } else {
       const availableSlots = findAvailableSlots(doctors);
       return availableSlots;
